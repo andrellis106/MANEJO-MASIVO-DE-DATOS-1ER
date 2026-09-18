@@ -31,3 +31,16 @@ print(df.groupby('gender')[['math score', 'reading score', 'writing score', 'pro
 
 print("\n--- IMPACTO DEL CURSO DE PREPARACIÓN ---")
 print(df.groupby('test preparation course')['promedio'].mean())
+
+# 7. Generación de gráfico visual
+promedios_materias = df[['math score', 'reading score', 'writing score']].mean()
+
+plt.figure(figsize=(8, 5))
+promedios_materias.plot(kind='bar', color=['#4C72B0', '#DD8452', '#55A868'])
+plt.title('Promedio General por Materia')
+plt.ylabel('Puntuación Promedio')
+plt.xlabel('Materia')
+plt.ylim(0, 100)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.savefig('promedios_materias.png')
+print("\nGráfico guardado exitosamente como promedios_materias.png")
