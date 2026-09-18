@@ -24,3 +24,10 @@ df['aprobado'] = (df['math score'] >= 60) & (df['reading score'] >= 60) & (df['w
 
 print("\n--- DATASET CON PROMEDIO Y ESTATUS ---")
 print(df[['math score', 'reading score', 'writing score', 'promedio', 'aprobado']].head())
+
+# 6. Agrupaciones y comparativas
+print("\n--- PROMEDIO POR GÉNERO ---")
+print(df.groupby('gender')[['math score', 'reading score', 'writing score', 'promedio']].mean())
+
+print("\n--- IMPACTO DEL CURSO DE PREPARACIÓN ---")
+print(df.groupby('test preparation course')['promedio'].mean())
