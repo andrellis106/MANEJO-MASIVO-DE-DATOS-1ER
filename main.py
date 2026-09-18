@@ -15,3 +15,12 @@ print(df.info())
 # 4. Estadísticas descriptivas de las puntuaciones
 print("\n--- ESTADÍSTICAS DESCRIPTIVAS ---")
 print(df.describe())
+
+# 5. Transformación de datos: Promedio y Aprobados
+df['promedio'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
+
+# Se considera aprobado si la nota es >= 60 en todas las materias
+df['aprobado'] = (df['math score'] >= 60) & (df['reading score'] >= 60) & (df['writing score'] >= 60)
+
+print("\n--- DATASET CON PROMEDIO Y ESTATUS ---")
+print(df[['math score', 'reading score', 'writing score', 'promedio', 'aprobado']].head())
